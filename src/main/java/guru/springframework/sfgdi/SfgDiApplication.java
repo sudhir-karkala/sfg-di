@@ -29,5 +29,9 @@ public class SfgDiApplication {
 		System.out.println("---I18nController---");
 		I18nController i18nController = (I18nController) applicationContext.getBean("i18nController");
 		System.out.println(i18nController.sayHello());
+
+		System.out.println("---PetService---");
+		PetController petController = (PetController) applicationContext.getBean("petController");
+		System.out.println(petController.whichPetIsTheBest());
 	}
 }
