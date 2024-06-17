@@ -1,6 +1,8 @@
 package guru.springframework.sfgdi;
 
 import guru.springframework.sfgdi.controllers.*;
+import guru.springframework.sfgdi.services.PrototypeBean;
+import guru.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -34,5 +36,16 @@ public class SfgDiApplication {
 		System.out.println("---PetService---");
 		PetController petController = (PetController) applicationContext.getBean("petController");
 		System.out.println(petController.whichPetIsTheBest());
+
+		System.out.println("---Bean Scopes---");
+		SingletonBean s1 = applicationContext.getBean(SingletonBean.class);
+		System.out.println(s1.getMyScope());
+		SingletonBean s2 = applicationContext.getBean(SingletonBean.class);
+		System.out.println(s2.getMyScope());
+
+		PrototypeBean p1 = applicationContext.getBean(PrototypeBean.class);
+		System.out.println(p1.getMyScope());
+		PrototypeBean p2 = applicationContext.getBean(PrototypeBean.class);
+		System.out.println(p2.getMyScope());
 	}
 }
