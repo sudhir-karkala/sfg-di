@@ -2,8 +2,23 @@ spring:
   application:
     name: sfg-di
   profiles:
-    active: cat,ES,qa
+    active:
+      - cat
+      - ES
+      - prod
 guru:
   username: YmlUserName
   password: YmlPass
   jdbcUrl: YmlUrl
+
+---
+# spring.profiles has been renamed to spring.config.activate.on-profile since spring-boot 2.4
+# see https://github.com/spring-projects/spring-boot/issues/22523
+spring:
+  config:
+    activate:
+      on-profile: prod
+guru:
+  username: YmlProdUserName
+  password: YmlProdPass
+  jdbcUrl: YmlProdUrl
