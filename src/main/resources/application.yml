@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: sfg-di
+  profiles:
+    active: cat,ES,qa
+guru:
+  username: YmlUserName
+  password: YmlPass
+  jdbcUrl: YmlUrl
