@@ -6,7 +6,6 @@ import guru.springframework.sfgdi.datasources.FakeDataSource;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepository;
 import guru.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import guru.springframework.sfgdi.services.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 
 @ImportResource("classpath:sfgdi-config.xml")
@@ -65,13 +64,11 @@ public class GreetingServiceConfig {
     }
 
     @Bean
-    public FakeDataSource getFakeDataSource(@Value("${guru.username}") String username,
-                                            @Value("${guru.password}") String password,
-                                            @Value("${guru.jdbcUrl}") String jdbcUrl) {
+    public FakeDataSource getFakeDataSource(SfgConfiguration sfgConfiguration) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcUrl(jdbcUrl);
+        fakeDataSource.setUsername(sfgConfiguration.getUsername());
+        fakeDataSource.setPassword(sfgConfiguration.getPassword());
+        fakeDataSource.setJdbcUrl(sfgConfiguration.getJdbcUrl());
         return fakeDataSource;
     }
 }
